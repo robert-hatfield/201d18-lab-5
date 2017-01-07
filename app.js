@@ -12,6 +12,7 @@ function sum(a,b){ //eslint-disable-line
   var result = a + b;
   var message = 'The sum of ' + a + ' and ' + b
  + ' is ' + result + '.';
+  console.log(message);
   return [result, message];
 }
 
@@ -32,6 +33,7 @@ Test this function by hand in the console to get it working, and when you think 
 function multiply(a,b){ //eslint-disable-line
   var result = a * b;
   var message = 'The product of ' + a + ' and ' + b + ' is ' + result + '.';
+  console.log(message);
   return [result, message];
 }
 
@@ -55,21 +57,21 @@ Test this function by hand in the console to get it working, and when you think 
 // I'm tired of typing "+ ' and ' +"
 var nd = ' and ';
 function sumAndMultiply(a, b, c){ //eslint-disable-line
-  // get the number returned by function sum()
-  var addAB = sum(a, b)[0];
-  console.log('Sum of first two numbers is: ' + addAB);
-  // call sum() again with previous result and use the 3rd argument
-  var addABC = sum(addAB ,c)[0];
+  // get the number returned by function sum() on a & b
+  var addAtoB = sum(a, b)[0];
+  console.log('Sum of first two numbers is: ' + addAtoB);
+  // call sum() again with previous result & c
+  var addABtoC = sum(addAtoB ,c)[0];
   // using .concat method on strings to reduce repetition
-  var sumMessage = ''.concat(a, nd, b, nd, c, ' sum to ', addABC, '.');
+  var sumMessage = ''.concat(a, nd, b, nd, c, ' sum to ', addABtoC, '.');
   console.log(sumMessage);
   // follow the same pattern for function multiply();
-  var multAB = multiply(a, b)[0];
-  console.log(a + ' * '.concat(' ', b , ' returns: ', multAB));
-  var multABC = multiply(multAB, c)[0];
-  var multiplyMessage = 'The product of '.concat(a, nd, b, nd, c, ' is ', multABC, '.');
+  var multAbyB = multiply(a, b)[0];
+  console.log(a + ' * '.concat(' ', b , ' returns: ', multAbyB));
+  var multABbyC = multiply(multAbyB, c)[0];
+  var multiplyMessage = 'The product of '.concat(a, nd, b, nd, c, ' is ', multABbyC, '.');
   console.log(multiplyMessage);
-  return [addABC, multABC, sumMessage, multiplyMessage];
+  return [addABtoC, multABbyC, sumMessage, multiplyMessage];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
@@ -91,38 +93,26 @@ Test this function by hand in the console to get it working, and when you think 
 var testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(testArray){ //eslint-disable-line
-  // validating arguments received and output of sum() function
-  console.log(['Input array contains', testArray]);
-  console.log('Array length is: ' + testArray.length);
-  console.log('sum() check performed on testArray[0] and testArray[1] is: ' + sum(testArray[0],testArray[1])[0]);
-  // this returns an array containing the sum and a string
-
   /*
   the array received by this function may be of any length;
-  need to iterate to ensure all numbers in the array are added;
-  note: might need to loop (testArray.length - 1)
+  need to iterate to ensure all numbers in the array are added.
   */
   var inputArrayString = '';
   var runningTotal = 0;
-  // var loopLength = testArray.length - 1;
   for (var i = 0; i < testArray.length; i += 1) {
     console.log('Beginning sumArray loop ' + (i + 1) + ' of ' + (testArray.length));
-    // console.log(sum(runningTotal, testArray[i]));
-    console.log(runningTotal + ' and ' + testArray[i]);
     runningTotal = sum(runningTotal, testArray[i])[0];
     console.log('runningTotal is: ' + runningTotal);
+    // Concatenate string of numbers added with separator
     inputArrayString += testArray[i] + ',';
-    console.log(inputArrayString);
+    console.log('Numbers added are: ' + inputArrayString);
   }
-  console.log(inputArrayString.slice(0, (inputArrayString.length - 1)));
+  inputArrayString = inputArrayString.slice(0, (inputArrayString.length - 1));
+  console.log(inputArrayString + ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.');
+  // comparing my output with expected output
+  console.log('2,3,4 was passed in as an array of numbers, and 9 is their sum.');
+  return(inputArrayString + ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.');
 }
-
-console.log('Testing one number input');
-sumArray([1]);
-console.log('Testing two numbers input');
-sumArray([12, 15]);
-console.log('Testing three numbers input, with negative and non-integer numbers.');
-sumArray([8, -10, 1.5]);
 
 // Here is the test for sumArray(); uncomment it to run it
 
