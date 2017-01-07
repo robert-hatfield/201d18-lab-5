@@ -53,7 +53,12 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a,b,c){ //eslint-disable-line
-
+  // get the number returned by function sum()
+  var result1 = sum(a,b)[0];
+  console.log(result1);
+  // call sum() again with previous result and use the 3rd argument
+  var result2 = sum(result1,c)[0];
+  console.log(result2);
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
