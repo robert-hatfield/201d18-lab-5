@@ -91,12 +91,26 @@ Test this function by hand in the console to get it working, and when you think 
 var testArray = [2,3,4]; //eslint-disable-line
 
 function sumArray(testArray){ //eslint-disable-line
+  // validating arguments received and output of sum() function
+  console.log(['Input array contains', testArray]);
+  console.log(testArray.length);
+  console.log(sum(testArray[0],testArray[1])[0]);
+  // this returns an array containing the sum and a string
 
+  /*
+  the array received by this function may be of any length;
+  need to iterate to ensure all numbers in the array are added;
+  note: might need to loop (testArray.length - 1)
+  */
+  // for (var i = 0; i < testArray.length; i++) {
+  //   console.log(sum(testArray[i],[i + 1]));
+  //
+  // }
 }
 
 // Here is the test for sumArray(); uncomment it to run it
 
-// testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
