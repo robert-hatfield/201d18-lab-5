@@ -108,10 +108,15 @@ function sumArray(testArray){ //eslint-disable-line
     console.log('Numbers added are: ' + inputArrayString);
   }
   inputArrayString = inputArrayString.slice(0, (inputArrayString.length - 1));
-  console.log(inputArrayString + ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.');
-  // comparing my output with expected output
+  // expected output per instructions
+  console.log('Expected output below:');
   console.log('2,3,4 was passed in as an array of numbers, and 9 is their sum.');
-  return(inputArrayString + ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.');
+  // comparing multiple outputs with expected output, none are matching
+  console.log('My output attempts:');
+  console.log(inputArrayString + ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.');
+  console.log(testArray + ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.');
+  console.log([testArray, ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.']);
+  return(testArray + ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.');
 }
 
 // Here is the test for sumArray(); uncomment it to run it
