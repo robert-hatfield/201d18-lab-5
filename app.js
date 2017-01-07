@@ -52,22 +52,28 @@ IMPORTANT DETAIL: You may not use the arithmetic operators + and * in this funct
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSumAndMultiply() function and see if the test passes.*/
 
 // Write your code here
+// I'm tired of typing "+ ' and ' +"
+var nd = ' and ';
 function sumAndMultiply(a,b,c){ //eslint-disable-line
   // get the number returned by function sum()
   var addAB = sum(a,b)[0];
   console.log('Sum of first two numbers is: ' + addAB);
   // call sum() again with previous result and use the 3rd argument
   var addABC = sum(addAB,c)[0];
-  console.log('And adding third returns: ' + addABC);
+  // using .concat method on strings to reduce repetition
+  var sumMessage = ''.concat(a, nd, b, nd, c, ' sum to ', addABC, '.');
+  console.log(sumMessage);
   // follow the same pattern for function multiply();
   var multAB = multiply(a,b)[0];
-  console.log(a + ' * ' + b + ' returned by multiply() is: ' + multAB);
+  console.log(a + ' * '.concat(' ', b , ' returns: ', multAB));
   var multABC = multiply(multAB,c)[0];
-  console.log('And ' + multAB + ' * ' + c + ' returns: ' + multABC);
+  var multiplyMessage = 'The product of '.concat(a, nd, b, nd, c, ' is ', multABC, '.');
+  console.log(multiplyMessage);
+  return [addABC, multABC, sumMessage, multiplyMessage];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
-// testSumAndMultiply(4,7,5);
+testSumAndMultiply(4,7,5);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
