@@ -52,12 +52,24 @@ IMPORTANT DETAIL: You may not use the arithmetic operators + and * in this funct
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSumAndMultiply() function and see if the test passes.*/
 
 // Write your code here
+// I'm tired of typing "+ ' and ' +"
+var nd = ' and ';
 function sumAndMultiply(a,b,c){ //eslint-disable-line
-  var resultSum = a + b + c;
-  var resultMultiply = a * b * c;
-  var messageSum = a + ' and ' + b + ' and ' + c + ' sum to ' + resultSum + '.';
-  var messageMultiply = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + resultMultiply + '.';
-  return [resultSum, resultMultiply, messageSum, messageMultiply];
+  // get the number returned by function sum()
+  var addAB = sum(a,b)[0];
+  console.log('Sum of first two numbers is: ' + addAB);
+  // call sum() again with previous result and use the 3rd argument
+  var addABC = sum(addAB,c)[0];
+  // using .concat method on strings to reduce repetition
+  var sumMessage = ''.concat(a, nd, b, nd, c, ' sum to ', addABC, '.');
+  console.log(sumMessage);
+  // follow the same pattern for function multiply();
+  var multAB = multiply(a,b)[0];
+  console.log(a + ' * '.concat(' ', b , ' returns: ', multAB));
+  var multABC = multiply(multAB,c)[0];
+  var multiplyMessage = 'The product of '.concat(a, nd, b, nd, c, ' is ', multABC, '.');
+  console.log(multiplyMessage);
+  return [addABC, multABC, sumMessage, multiplyMessage];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
