@@ -54,19 +54,19 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 // I'm tired of typing "+ ' and ' +"
 var nd = ' and ';
-function sumAndMultiply(a,b,c){ //eslint-disable-line
+function sumAndMultiply(a, b, c){ //eslint-disable-line
   // get the number returned by function sum()
-  var addAB = sum(a,b)[0];
+  var addAB = sum(a, b)[0];
   console.log('Sum of first two numbers is: ' + addAB);
   // call sum() again with previous result and use the 3rd argument
-  var addABC = sum(addAB,c)[0];
+  var addABC = sum(addAB ,c)[0];
   // using .concat method on strings to reduce repetition
   var sumMessage = ''.concat(a, nd, b, nd, c, ' sum to ', addABC, '.');
   console.log(sumMessage);
   // follow the same pattern for function multiply();
-  var multAB = multiply(a,b)[0];
+  var multAB = multiply(a, b)[0];
   console.log(a + ' * '.concat(' ', b , ' returns: ', multAB));
-  var multABC = multiply(multAB,c)[0];
+  var multABC = multiply(multAB, c)[0];
   var multiplyMessage = 'The product of '.concat(a, nd, b, nd, c, ' is ', multABC, '.');
   console.log(multiplyMessage);
   return [addABC, multABC, sumMessage, multiplyMessage];
@@ -88,13 +88,13 @@ IMPORTANT DETAIL: You may not use the arithmetic operator + in this function. To
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSumArray() function and see if the test passes.*/
 
 // Write your code here
-var testArray = [2,3,4]; //eslint-disable-line
+var testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(testArray){ //eslint-disable-line
   // validating arguments received and output of sum() function
   console.log(['Input array contains', testArray]);
-  console.log(testArray.length);
-  console.log(sum(testArray[0],testArray[1])[0]);
+  console.log('Array length is: ' + testArray.length);
+  console.log('sum() check performed on testArray[0] and testArray[1] is: ' + sum(testArray[0],testArray[1])[0]);
   // this returns an array containing the sum and a string
 
   /*
@@ -102,11 +102,27 @@ function sumArray(testArray){ //eslint-disable-line
   need to iterate to ensure all numbers in the array are added;
   note: might need to loop (testArray.length - 1)
   */
-  // for (var i = 0; i < testArray.length; i++) {
-  //   console.log(sum(testArray[i],[i + 1]));
-  //
-  // }
+  var inputArrayString = '';
+  var runningTotal = 0;
+  // var loopLength = testArray.length - 1;
+  for (var i = 0; i < testArray.length; i += 1) {
+    console.log('Beginning sumArray loop ' + (i + 1) + ' of ' + (testArray.length));
+    // console.log(sum(runningTotal, testArray[i]));
+    console.log(runningTotal + ' and ' + testArray[i]);
+    runningTotal = sum(runningTotal, testArray[i])[0];
+    console.log('runningTotal is: ' + runningTotal);
+    inputArrayString += testArray[i] + ',';
+    console.log(inputArrayString);
+  }
+  console.log(inputArrayString.slice(0, (inputArrayString.length - 1)));
 }
+
+console.log('Testing one number input');
+sumArray([1]);
+console.log('Testing two numbers input');
+sumArray([12, 15]);
+console.log('Testing three numbers input, with negative and non-integer numbers.');
+sumArray([8, -10, 1.5]);
 
 // Here is the test for sumArray(); uncomment it to run it
 
