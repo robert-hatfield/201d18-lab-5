@@ -116,7 +116,7 @@ function sumArray(testArray){ //eslint-disable-line
   console.log(inputArrayString + ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.');
   console.log(testArray + ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.');
   console.log([testArray, ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.']);
-  return(testArray + ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.');
+  return([runningTotal, inputArrayString + ' was passed in as an array of numbers, and ' + runningTotal + ' is their sum.']);
 }
 
 // Here is the test for sumArray(); uncomment it to run it
