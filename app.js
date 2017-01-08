@@ -137,12 +137,21 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(testArray){ //eslint-disable-line
-  var firstMultiply = multiply(testArray[0],testArray,[1]);
-  var secondMultiply = multiply(firstMultiply[0],testArray[2]);
+  var inputArrayString = '';
+  var runningTotal = 1;
+  for (var i = 0; i < testArray.length; i++) {
+    runningTotal = multiply(runningTotal, testArray[i])[0];
+    inputArrayString += testArray[i] + ',';
+    console.log(inputArrayString);
+  }
+  var returnString = inputArrayString.slice(0, (inputArrayString.length - 1));
+  console.log(runningTotal);
+  console.log(returnString);
+  return [runningTotal, 'The numbers '.concat(returnString, ' have a product of ', runningTotal, '.')];
   // this is incomplete
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray([2,3,4]);
+testMultiplyArray([2,3,4]);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. You're done! Submit the link to the repo following the instructions in Canvas.
